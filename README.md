@@ -7,3 +7,5 @@
 |IntroductoryProblems:WeirdAlgorithm|25/05/07|
 |IntroductoryProblems:MissingNumber|25/05/07|
 |IntroductoryProblems:Repetitions|25/05/07|
+|IntroductoryProblems:IncreasingArray|25/05/25|
+|IntroductoryProblems:Permutations|25/05/25|
