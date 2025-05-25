@@ -2,8 +2,6 @@
 
 ## Fxxking Algorithms Log
 
-|-|-|
-
 |Name|Finish Date|
 |-|-|
 |IntroductoryProblems:WeirdAlgorithm|25/05/07|
