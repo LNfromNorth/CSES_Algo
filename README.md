@@ -10,6 +10,7 @@
 |IntroductoryProblems:IncreasingArray|25/05/25|
 |IntroductoryProblems:Permutations|25/05/25|
 |IntroductoryProblems:NumberSpiral|25/05/26|
+|IntroductoryProblems:TwoKnights|25/05/26|
 
 ## Reference
 
