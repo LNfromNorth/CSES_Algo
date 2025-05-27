@@ -12,6 +12,7 @@
 |IntroductoryProblems:NumberSpiral|25/05/26|
 |IntroductoryProblems:TwoKnights|25/05/26|
 |IntroductoryProblems:TwoSets|25/05/27|
+|IntroductoryProblems:BitStrings|25/05/27|
 
 ## Reference
 
