@@ -14,6 +14,7 @@
 |IntroductoryProblems:TwoSets|25/05/27|
 |IntroductoryProblems:BitStrings|25/05/27|
 |IntroductoryProblems:TrailingZero|25/05/28|
+|IntroductoryProblems:CoinPiles|25/05/28|
 
 ## Reference
 
