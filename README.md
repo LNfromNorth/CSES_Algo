@@ -15,6 +15,8 @@
 |IntroductoryProblems:BitStrings|25/05/27|
 |IntroductoryProblems:TrailingZero|25/05/28|
 |IntroductoryProblems:CoinPiles|25/05/28|
+|IntroductoryProblems:PalindromeReorder|25/05/29|
+|IntroductoryProblems:GrayCode|25/05/29|
 
 ## Reference
 
