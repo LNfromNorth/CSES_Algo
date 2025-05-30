@@ -18,6 +18,7 @@
 |IntroductoryProblems:PalindromeReorder|25/05/29|
 |IntroductoryProblems:GrayCode|25/05/29|
 |IntroductoryProblems:TowerOfHanoi|25/05/30|
+|IntroductoryProblems:CreatingStrings|25/05/30|
 
 ## Reference
 
