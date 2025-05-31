@@ -20,6 +20,7 @@
 |IntroductoryProblems:TowerOfHanoi|25/05/30|
 |IntroductoryProblems:CreatingStrings|25/05/30|
 |IntroductoryProblems:AppleDivision|25/05/31|
+|IntroductoryProblems:ChessboardAndQueens|25/05/31|
 
 ## Reference
 
