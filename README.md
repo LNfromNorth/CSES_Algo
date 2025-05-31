@@ -19,6 +19,7 @@
 |IntroductoryProblems:GrayCode|25/05/29|
 |IntroductoryProblems:TowerOfHanoi|25/05/30|
 |IntroductoryProblems:CreatingStrings|25/05/30|
+|IntroductoryProblems:AppleDivision|25/05/31|
 
 ## Reference
 
