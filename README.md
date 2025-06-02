@@ -22,6 +22,7 @@
 |IntroductoryProblems:AppleDivision|25/05/31|
 |IntroductoryProblems:ChessboardAndQueens|25/05/31|
 |IntroductoryProblems:RaabGameI|25/06/1|
+|IntroductoryProblems:MexGridConstruction|25/06/2|
 |SortingAndSearching:DsitinctNumbers|25/06/1|
 
 ## Reference
