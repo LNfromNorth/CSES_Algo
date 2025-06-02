@@ -21,9 +21,10 @@
 |IntroductoryProblems:CreatingStrings|25/05/30|
 |IntroductoryProblems:AppleDivision|25/05/31|
 |IntroductoryProblems:ChessboardAndQueens|25/05/31|
-|IntroductoryProblems:RaabGameI|25/06/1|
-|IntroductoryProblems:MexGridConstruction|25/06/2|
-|SortingAndSearching:DsitinctNumbers|25/06/1|
+|IntroductoryProblems:RaabGameI|25/06/01|
+|IntroductoryProblems:MexGridConstruction|25/06/02|
+|SortingAndSearching:DsitinctNumbers|25/06/01|
+|SortingAndSearching:Apartments|25/06/02|
 
 ## Reference
 
