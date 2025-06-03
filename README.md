@@ -25,6 +25,7 @@
 |IntroductoryProblems:MexGridConstruction|25/06/02|
 |SortingAndSearching:DsitinctNumbers|25/06/01|
 |SortingAndSearching:Apartments|25/06/02|
+|SortingAndSearching:FerrisWheel|25/06/03|
 
 ## Reference
 
