@@ -23,10 +23,12 @@
 |IntroductoryProblems:ChessboardAndQueens|25/05/31|
 |IntroductoryProblems:RaabGameI|25/06/01|
 |IntroductoryProblems:MexGridConstruction|25/06/02|
+|IntroductoryProblems:KnightMovesGrid|25/06/04|
 |SortingAndSearching:DsitinctNumbers|25/06/01|
 |SortingAndSearching:Apartments|25/06/02|
 |SortingAndSearching:FerrisWheel|25/06/03|
 |SortingAndSearching:ConcertTickets|25/06/04|
+|SortingAndSearching:RestaurantCustomers|25/06/05|
 
 ## Reference
 

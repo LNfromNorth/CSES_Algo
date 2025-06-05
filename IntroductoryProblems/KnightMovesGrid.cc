@@ -1,50 +1,71 @@
 #include <iostream>
+#include <queue>
 #include <string.h>
+#include <vector>
 using namespace std;
 
-int xi[4] = {-1, -2, -2, -1};
-int yi[4] = {-2, -1, 1, 2};
-int init[21] = {0, 3, 4, 2, 1, 4, 3, 2, 3, 2, 2, 3, 2, 3, 4, 3, 4, 3, 4, 3, 4};
+int xi[8] = {1, 2, 2, 1, -1, -2, -2, -1};
+int yi[8] = {-2, -1, 1, 2, 2, 1, -1, -2};
 
-#define IDX(x, y) ((x) * ((x) - 1) / 2 + (y) - 1)
+#define IDX(x, y, len) ((y - 1) * len + (x - 1))
 
-int find(int *output, int x, int y) {
-    int min = 9999999;
-    for (int i = 0; i < 4; i++) {
+void find(vector<int> &grid, int x, int y, int len, int level) {
+    for (int i = 0; i < 8; i++) {
         int xx = x + xi[i];
         int yy = y + yi[i];
-        if (xx > 0 && yy > 0 && yy <= xx) {
-            if (output[IDX(xx, yy)] < min) {
-                min = output[IDX(xx, yy)];
+        if (xx == 1 && yy == 1)
+            continue;
+        if (xx > 0 && xx <= len && yy > 0 && yy <= len) {
+            if (grid[IDX(xx, yy, len)] == 0) {
+                grid[IDX(xx, yy, len)] = level;
+                grid[IDX(yy, xx, len)] = level;
+                find(grid, xx, yy, len, level + 1);
+            } else if (grid[IDX(xx, yy, len)] > level) {
+                grid[IDX(xx, yy, len)] = level;
+                grid[IDX(yy, xx, len)] = level;
+                find(grid, xx, yy, len, level + 1);
             }
         }
     }
-    return min + 1;
+    return;
+}
+
+void find_BFS(vector<int> &grid, int len) {
+    queue<pair<int, int>> q;
+    q.push({1, 1});
+    grid[IDX(1, 1, len)] = 0;
+    while (!q.empty()) {
+        auto [x, y] = q.front();
+        q.pop();
+        int level = grid[IDX(x, y, len)];
+        for (int i = 0; i < 8; i++) {
+            int xx = x + xi[i];
+            int yy = y + yi[i];
+            if (xx == 1 && yy == 1)
+                continue;
+            if (xx > 0 && xx <= len && yy > 0 && yy <= len) {
+                if (grid[IDX(xx, yy, len)] == 0 ||
+                    grid[IDX(xx, yy, len)] > level + 1) {
+                    grid[IDX(xx, yy, len)] = level + 1;
+                    grid[IDX(yy, xx, len)] = level + 1;
+                    q.push({xx, yy});
+                }
+            }
+        }
+    }
 }
 
 int main() {
     int num;
     cin >> num;
-    int total = num * (num + 1) / 2;
-    int add = ((total - 21) > 0) ? total - 21 : 0;
-    int *output = (int *)malloc((add + 21) * sizeof(int));
-    memset(output, 0, (1 + num) / 2 * num * sizeof(int));
-    memcpy(output, init, 21 * sizeof(int));
-    if (num > 6) {
-        for (int x = 7; x <= num; x++) {
-            for (int y = 1; y <= x; y++) {
-                output[IDX(x, y)] = find(output, x, y);
-            }
-        }
+    vector<int> grid(num * num, 0);
+    // find(grid, 1, 1, num, 1);
+    find_BFS(grid, num);
+    for (int i = 0; i < (num * num); i++) {
+        if (i % num == 0)
+            cout << endl;
+        cout << grid[i] << " ";
     }
-    for (int i = 0; i < num; i++) {
-        for (int j = 0; j < num; j++) {
-            if (i <= j)
-                cout << output[IDX(j + 1, i + 1)] << " ";
-            else
-                cout << output[IDX(i + 1, j + 1)] << " ";
-        }
-        cout << endl;
-    }
+    cout << endl;
     return 0;
 }
