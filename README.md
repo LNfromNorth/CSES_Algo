@@ -24,6 +24,7 @@
 |IntroductoryProblems:RaabGameI|25/06/01|
 |IntroductoryProblems:MexGridConstruction|25/06/02|
 |IntroductoryProblems:KnightMovesGrid|25/06/04|
+|IntroductoryProblems:GridColoringI|25/06/07|
 |SortingAndSearching:DsitinctNumbers|25/06/01|
 |SortingAndSearching:Apartments|25/06/02|
 |SortingAndSearching:FerrisWheel|25/06/03|
