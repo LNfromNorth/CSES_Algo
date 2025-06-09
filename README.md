@@ -33,6 +33,7 @@
 |SortingAndSearching:RestaurantCustomers|25/06/05|
 |SortingAndSearching:MovieFestival|25/06/07|
 |SortingAndSearching:SumOfTwoValues|25/06/08|
+|SortingAndSearching:MaximumSubarraySum|25/06/09|
 
 ## Reference
 
