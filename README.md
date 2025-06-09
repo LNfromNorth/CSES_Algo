@@ -34,6 +34,7 @@
 |SortingAndSearching:MovieFestival|25/06/07|
 |SortingAndSearching:SumOfTwoValues|25/06/08|
 |SortingAndSearching:MaximumSubarraySum|25/06/09|
+|SortingAndSearching:StickLengths|25/06/09|
 
 ## Reference
 
