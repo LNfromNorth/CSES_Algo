@@ -26,6 +26,7 @@
 |IntroductoryProblems:KnightMovesGrid|25/06/04|
 |IntroductoryProblems:GridColoringI|25/06/07|
 |IntroductoryProblems:DigitQueries|25/06/08|
+|IntroductoryProblems:StringReorder|25/06/16|
 |SortingAndSearching:DsitinctNumbers|25/06/01|
 |SortingAndSearching:Apartments|25/06/02|
 |SortingAndSearching:FerrisWheel|25/06/03|
