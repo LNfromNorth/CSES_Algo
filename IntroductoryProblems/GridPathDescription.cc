@@ -1,87 +1,83 @@
 #include <iostream>
-#include <queue>
-#include <vector>
 using namespace std;
 
-struct node {
-    int level;
-    uint8_t grid[49];
-    int x;
-    int y;
+#define isValid(a) (a >= 0 && a < 7 ? 1 : 0)
 
-    node(int l, const uint8_t *g, int x_, int y_) : level(l), x(x_), y(y_) { std::copy(g, g + 49, grid); }
-};
+#define right 0
+#define left 1
+#define down 2
+#define up 3
 
-void move(node &nd, char direction) {
-    switch (direction) {
-    case 'U':
-        nd.y -= 1;
-        break;
-    case 'D':
-        nd.y += 1;
-        break;
-    case 'R':
-        nd.x += 1;
-        break;
-    case 'L':
-        nd.x -= 1;
-        break;
-    default:
+string str;
+static bool vis[7][7] = {};
+int path, step;
+
+void DFSearch(int x, int y) {
+    if (step == 48 && x == 6 && y == 0) {
+        path++;
         return;
     }
-    nd.grid[nd.y * 7 + nd.x] = 1;
-    return;
-}
+    if (x == 6 && y == 0)
+        return;
+    if (vis[x][y] ||
+        ((y >= 1 && y <= 5 && !vis[x][y + 1] && !vis[x][y - 1]) &&
+         ((x == 0 && vis[x + 1][y]) || (x == 6 && vis[x - 1][y]))) ||
+        ((x >= 1 && x <= 5 && !vis[x + 1][y] && !vis[x - 1][y]) &&
+         ((y == 0 && vis[x][y + 1]) || (y == 6 && vis[x][y - 1]))) ||
+        (x >= 1 && x <= 5 && y >= 1 && y <= 5 && vis[x - 1][y] && vis[x + 1][y] && !vis[x][y + 1] && !vis[x][y - 1]) ||
+        (x >= 1 && x <= 5 && y >= 1 && y <= 5 && vis[x][y - 1] && vis[x][y + 1] && !vis[x - 1][y] && !vis[x + 1][y]))
+        return;
 
-int BFSearch(string input) {
-    queue<node> q;
-    uint8_t grid[49] = {1, 0};
-    node first(0, grid, 0, 0);
-    q.push(first);
-    int count = 0;
-    while (!q.empty()) {
-        node current = q.front();
-        q.pop();
-        // get right answer
-        if (current.level == (int)input.size() && current.x == 0 && current.y == 6) {
-            count++;
+    vis[x][y] = true;
+    if (str[step] == '?') {
+        if (isValid(x + 1) && !vis[x + 1][y]) { // down
+            step++;
+            DFSearch(x + 1, y);
+            step--;
         }
-        if (input[current.level] != '?') { // if have a default value, set the path to default value
-            node next(current.level + 1, current.grid, current.x, current.y);
-            move(next, input[current.level]);
-            if (next.x >= 0 && next.x <= 6 && next.y >= 0 && next.y <= 6)
-                q.push(next);
-            continue;
-        } else { // if no default value, just try all possiable value
-            if (current.x - 1 >= 0 && current.grid[current.y * 7 + current.x - 1] == 0) {
-                node next(current.level + 1, current.grid, current.x - 1, current.y);
-                next.grid[next.y * 7 + next.x] = 1;
-                q.push(next);
-            }
-            if (current.x + 1 <= 6 && current.grid[current.y * 7 + current.x + 1] == 0) {
-                node next(current.level + 1, current.grid, current.x + 1, current.y);
-                next.grid[next.y * 7 + next.x] = 1;
-                q.push(next);
-            }
-            if (current.y - 1 >= 0 && current.grid[(current.y - 1) * 7 + current.x] == 0) {
-                node next(current.level + 1, current.grid, current.x, current.y - 1);
-                next.grid[next.y * 7 + next.x] = 1;
-                q.push(next);
-            }
-            if (current.y + 1 <= 6 && current.grid[(current.y + 1) * 7 + current.x] == 0) {
-                node next(current.level + 1, current.grid, current.x, current.y + 1);
-                next.grid[next.y * 7 + next.x] = 1;
-                q.push(next);
-            }
+        if (isValid(x - 1) && !vis[x - 1][y]) { // up
+            step++;
+            DFSearch(x - 1, y);
+            step--;
         }
+        if (isValid(y + 1) && !vis[x][y + 1]) { // right
+            step++;
+            DFSearch(x, y + 1);
+            step--;
+        }
+        if (isValid(y - 1) && !vis[x][y - 1]) { // left
+            step++;
+            DFSearch(x, y - 1);
+            step--;
+        }
+    } else if (str[step] == 'D' && isValid(x + 1) && !vis[x + 1][y]) { // down
+        step++;
+        DFSearch(x + 1, y);
+        step--;
+    } else if (str[step] == 'U' && isValid(x - 1) && !vis[x - 1][y]) { // up
+        step++;
+        DFSearch(x - 1, y);
+        step--;
+    } else if (str[step] == 'R' && isValid(y + 1) && !vis[x][y + 1]) { // right
+        step++;
+        DFSearch(x, y + 1);
+        step--;
+    } else if (str[step] == 'L' && isValid(y - 1) && !vis[x][y - 1]) { // left
+        step++;
+        DFSearch(x, y - 1);
+        step--;
     }
-    return count;
+    vis[x][y] = false;
+    return;
 }
 
 int main() {
     string input;
     cin >> input;
-    int count = BFSearch(input);
-    cout << count << endl;
+    path = 0;
+    step = 0;
+    str = input;
+    DFSearch(0, 0);
+    cout << path << endl;
     return 0;
 }

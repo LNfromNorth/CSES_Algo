@@ -27,6 +27,7 @@
 |IntroductoryProblems:GridColoringI|25/06/07|
 |IntroductoryProblems:DigitQueries|25/06/08|
 |IntroductoryProblems:StringReorder|25/06/16|
+|IntroductoryProblems:GridPathDescription|25/06/21|
 |SortingAndSearching:DsitinctNumbers|25/06/01|
 |SortingAndSearching:Apartments|25/06/02|
 |SortingAndSearching:FerrisWheel|25/06/03|
@@ -38,6 +39,12 @@
 |SortingAndSearching:StickLengths|25/06/09|
 |SortingAndSearching:MissingCoinSum|25/06/15|
 |SortingAndSearching:CollectingNumbers|25/06/15|
+
+## Finished
+
+| Group Name | Date |
+|-|-|
+|IntroductoryProblems | 25/06/21|
 
 ## Reference
 
