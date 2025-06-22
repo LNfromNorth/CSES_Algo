@@ -40,6 +40,7 @@
 |SortingAndSearching:MissingCoinSum|25/06/15|
 |SortingAndSearching:CollectingNumbers|25/06/15|
 |SortingAndSearching:CollectingNumbersII|25/06/22|
+|SortingAndSearching:Playlist|25/06/22|
 
 ## Finished
 
