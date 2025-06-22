@@ -1,4 +1,5 @@
 #include <iostream>
+#include <set>
 #include <vector>
 using namespace std;
 
@@ -6,10 +7,19 @@ int get_round(vector<int> &pos, vector<int> &input, pair<int, int> sw, int &brea
     int a = input[sw.first - 1];
     int b = input[sw.second - 1];
 
+    set<int> check_set;
+
     if (a > b)
         swap(a, b);
 
-    for (int i = a - 1; i <= b + 1; ++i) {
+    check_set.insert(a - 1);
+    check_set.insert(a);
+    check_set.insert(a + 1);
+    check_set.insert(b - 1);
+    check_set.insert(b);
+    check_set.insert(b + 1);
+
+    for (int i : check_set) {
         if (i >= 1 && i < (int)pos.size() - 1) {
             breaks -= (pos[i] > pos[i + 1]);
         }
@@ -18,7 +28,7 @@ int get_round(vector<int> &pos, vector<int> &input, pair<int, int> sw, int &brea
     swap(input[sw.first - 1], input[sw.second - 1]);
     swap(pos[a], pos[b]);
 
-    for (int i = a - 1; i <= b + 1; i++) {
+    for (int i : check_set) {
         if (i >= 1 && i < (int)pos.size() - 1) {
             breaks += (pos[i] > pos[i + 1]);
         }

@@ -39,6 +39,7 @@
 |SortingAndSearching:StickLengths|25/06/09|
 |SortingAndSearching:MissingCoinSum|25/06/15|
 |SortingAndSearching:CollectingNumbers|25/06/15|
+|SortingAndSearching:CollectingNumbersII|25/06/22|
 
 ## Finished
 
