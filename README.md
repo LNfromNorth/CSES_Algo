@@ -42,6 +42,8 @@
 |SortingAndSearching:CollectingNumbersII|25/06/22|
 |SortingAndSearching:Playlist|25/06/22|
 |SortingAndSearching:Towers|25/06/23|
+|SortingAndSearching:TrafficLights|25/06/24|
+|SortingAndSearching:DistinctValuesSubarrays|25/06/26|
 
 ## Finished
 
