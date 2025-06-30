@@ -44,6 +44,7 @@
 |SortingAndSearching:Towers|25/06/23|
 |SortingAndSearching:TrafficLights|25/06/24|
 |SortingAndSearching:DistinctValuesSubarrays|25/06/26|
+|SortingAndSearching:JosephusProblemI|25/06/30|
 
 ## Finished
 
