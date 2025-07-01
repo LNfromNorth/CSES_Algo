@@ -7,10 +7,64 @@ struct node {
     struct node *next;
 };
 
+void solve(int num, int k) {
+    vector<vector<int>> arr;
+    int root = sqrt(num);
+    int row = 0, col = 0, count = 0;
+    vector<int> vec;
+    for (int i = 1; i <= num; i++) {
+        if (count > root) {
+            count = 0;
+            arr.push_back(vec);
+            vec.clear();
+        }
+        vec.push_back(i);
+        count++;
+    }
+    if (!vec.empty())
+        arr.push_back(vec);
+    for (int i = 0; i < num; i++) {
+        int j = k % (num - i);
+        while (j) {
+            if (col + j < (int)arr[row].size()) {
+                col += j;
+                j = 0;
+            } else {
+                j -= arr[row].size() - col;
+                col = 0;
+                row++;
+            }
+            if (row >= (int)arr.size())
+                row = 0;
+        }
+        while ((int)arr[row].size() <= col) {
+            col = 0;
+            row++;
+            if (row >= (int)arr.size())
+                row = 0;
+        }
+        cout << arr[row][col] << " ";
+        if (i != num - 1) {
+            arr[row].erase(arr[row].begin() + col);
+            while ((int)arr[row].size() <= col) {
+                col = 0;
+                row++;
+                if (row >= (int)arr.size())
+                    row = 0;
+            }
+        }
+    }
+}
+
 int main() {
     long num, k;
     cin >> num;
     cin >> k;
+    solve(num, k);
+    return 0;
+}
+
+void solve_dlist(int num, int k) {
     node *head = (node *)malloc(sizeof(node));
     head->value = 1;
     node *current = head;
@@ -66,5 +120,4 @@ int main() {
     }
     cout << current->value << endl;
     free(current);
-    return 0;
 }
