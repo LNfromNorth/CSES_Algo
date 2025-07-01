@@ -3,14 +3,14 @@ using namespace std;
 
 struct node {
     int value;
+    struct node *pre;
     struct node *next;
 };
 
 int main() {
-    long num, k, statick;
+    long num, k;
     cin >> num;
     cin >> k;
-    statick = k % num;
     node *head = (node *)malloc(sizeof(node));
     head->value = 1;
     node *current = head;
@@ -18,28 +18,48 @@ int main() {
         node *nnode = (node *)malloc(sizeof(node));
         nnode->value = i;
         current->next = nnode;
+        nnode->pre = current;
         current = nnode;
     }
     current->next = head;
-    node *pre = current;
+    head->pre = current;
     current = head;
-    long skip = statick;
+    int direction = 0;
+    long skip = k % num;
+    if (skip > (num / 2)) {
+        direction = 1;
+        skip = num - skip;
+    }
     while (skip > 0) {
-        current = current->next;
-        pre = pre->next;
+        if (direction == 0) {
+            current = current->next;
+        } else {
+            current = current->pre;
+        }
         skip--;
     }
     int count = num;
     while (count > 1) {
         cout << current->value << " ";
-        node *ptr = current->next;
-        pre->next = ptr;
+        node *pre = current->pre;
+        node *next = current->next;
+        pre->next = next;
+        next->pre = pre;
         free(current);
-        current = ptr;
+        current = next;
         skip = k % (count - 1);
+        if (skip > (num / 2)) {
+            direction = 1;
+            skip = count - 1 - skip;
+        } else {
+            direction = 0;
+        }
         while (skip > 0) {
-            current = current->next;
-            pre = pre->next;
+            if (direction == 0) {
+                current = current->next;
+            } else {
+                current = current->pre;
+            }
             skip--;
         }
         count--;
