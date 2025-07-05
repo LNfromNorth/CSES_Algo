@@ -1,58 +1,48 @@
+#include <algorithm>
 #include <bits/stdc++.h>
+#include <math.h>
 using namespace std;
-
-struct node {
-    long length;
-    vector<int> idx;
-
-    node(long _length) : length(_length) {}
-    bool operator<(const node &other) const { return length < other.length; }
-};
 
 int main() {
     int num;
     cin >> num;
-    vector<pair<long, long>> input(num);
-    vector<int> output1(num, 0);
-    vector<int> output2(num, 0);
-    set<node> cset;
-    for (int i = 0; i < num; i++) {
-        cin >> input[i].first;
-        cin >> input[i].second;
-        long length = input[i].second - input[i].first;
-        auto it = cset.upper_bound(node(length));
-        if (it != cset.end()) {
-            while (it != cset.end()) {
-                for (int j = 0; j < (int)(*it).idx.size(); j++) {
-                    long cstart = input[(*it).idx[j]].first;
-                    long cend = input[(*it).idx[j]].second;
-                    if (cstart <= input[i].first && cend >= input[i].second) {
-                        output1[(*it).idx[j]] = 1;
-                        output2[i] = 1;
-                    }
-                }
-                it++;
-            }
+    vector<tuple<long, long, int>> input(num);
+    vector<int> output1(num, 0), output2(num, 0);
+
+    for (int i = 0; i < num; ++i) {
+        long start, end;
+        cin >> start >> end;
+        input[i] = {start, end, i};
+    }
+
+    sort(input.begin(), input.end(), [](const auto &a, const auto &b) {
+        if (get<0>(a) != get<0>(b))
+            return get<0>(a) < get<0>(b);
+        return get<1>(a) > get<1>(b);
+    });
+
+    int minEnd = 2e9;
+    for (int i = num - 1; i >= 0; i--) {
+        if (get<1>(input[i]) >= minEnd) {
+            output1[get<2>(input[i])] = 1;
         }
-        it = cset.upper_bound(node(length));
-        if ((*it).length == length) {
-            node modify = (*it);
-            cset.erase(it);
-            modify.idx.push_back(i);
-            cset.insert(modify);
-        } else {
-            node nnode = node(length);
-            nnode.idx.push_back(i);
-            cset.insert(nnode);
+        minEnd = min<int>(minEnd, get<1>(input[i]));
+    }
+
+    int maxEnd = 0;
+    for (int i = 0; i < num; i++) {
+        if (get<1>(input[i]) <= maxEnd) {
+            output2[get<2>(input[i])] = 1;
         }
+        maxEnd = max<int>(maxEnd, get<1>(input[i]));
     }
-    for (int i = 0; i < num; i++) {
-        cout << output1[i] << " ";
-    }
+
+    for (auto i : output1)
+        cout << i << " ";
     cout << endl;
-    for (int i = 0; i < num; i++) {
-        cout << output2[i] << " ";
-    }
+    for (auto i : output2)
+        cout << i << " ";
     cout << endl;
+
     return 0;
 }

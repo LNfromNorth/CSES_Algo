@@ -1,6 +1,6 @@
 # 编译器设置
 CXX := g++
-CXXFLAGS := -std=c++11 -Wall -Wextra -g
+CXXFLAGS := -std=c++14 -Wall -Wextra -g
 
 # 源文件目录和构建目录
 SRC_DIR := .

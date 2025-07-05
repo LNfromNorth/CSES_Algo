@@ -47,6 +47,7 @@
 |SortingAndSearching:JosephusProblemI|25/06/30|
 |SortingAndSearching:JosephusProblemII|25/07/01|
 |SortingAndSearching:DistinctValuesSubsequences|25/07/05|
+|SortingAndSearching:NestedRangesCheck|25/07/05|
 
 ## Finished
 
